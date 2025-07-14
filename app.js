@@ -17,19 +17,17 @@ async function generateJenkinsfile() {
 
   const projectType = await askQuestion("Enter your project type (e.g., Node.js, Java, Python): ");
   const buildTool = await askQuestion("Enter your build tool (e.g., npm, Maven, Gradle): ");
-  const testCommand = await askQuestion("Enter your test command (e.g., npm test, mvn test): ");
-  const deployCommand = await askQuestion("Enter your deploy command (optional): ");
+  
 
   const prompt = `
 Generate a Jenkinsfile for a ${projectType} project.
 Build tool: ${buildTool}
-Test command: ${testCommand}
-Deploy command: ${deployCommand || "No deployment"}
+
 
 Requirements:
 - Use Jenkins Declarative Pipeline Syntax
 - Use agent any
-- Include stages: checkout, build, test, deploy (if provided)
+- Include stages: checkout, build
 `;
 
   const url = "https://api.groq.com/openai/v1/chat/completions";

@@ -5,21 +5,14 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/your-username/your-repo-name.git'
+                git 'https://your-git-repo-url.com/your-repo-name.git'
             }
         }
         stage('Build') {
             steps {
                 sh 'npm install'
+                sh 'npm run build'
             }
-        }
-        stage('Test') {
-            steps {
-                sh 'npm test'
-            }
-        }
-        stage('Deploy') {
-            // No deployment command provided, so this stage is empty
         }
     }
 }
