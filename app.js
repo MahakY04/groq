@@ -26,12 +26,10 @@ Build tool: ${buildTool}
 Test command: ${testCommand}
 Deploy command: ${deployCommand || "No deployment"}
 
-Include:
-- checkout from SCM
-- build stage
-- test stage
-- deploy stage (optional)
-Use Jenkins Declarative Pipeline Syntax.
+Requirements:
+- Use Jenkins Declarative Pipeline Syntax
+- Use agent label 'NodeJs_18'
+- Include stages: checkout, build, test, deploy (if provided)
 `;
 
   const url = "https://api.groq.com/openai/v1/chat/completions";
@@ -40,16 +38,16 @@ Use Jenkins Declarative Pipeline Syntax.
     const response = await axios.post(
       url,
       {
-        model: "llama3-70b-8192", // Also try llama3-8b-8192 if needed
+        model: "llama3-70b-8192",
         messages: [{ role: "user", content: prompt }],
         temperature: 0.7,
-        max_tokens: 1000
+        max_tokens: 1000,
       },
       {
         headers: {
           "Authorization": `Bearer ${process.env.GROQ_API_KEY}`,
-          "Content-Type": "application/json"
-        }
+          "Content-Type": "application/json",
+        },
       }
     );
 
