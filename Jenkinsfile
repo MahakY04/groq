@@ -5,7 +5,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://your-git-repo-url.com/your-repo-name.git'
+                git 'https://github.com/MahakY04/groq.git'
             }
         }
         stage('Build') {
