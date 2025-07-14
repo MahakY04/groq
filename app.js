@@ -28,7 +28,7 @@ Deploy command: ${deployCommand || "No deployment"}
 
 Requirements:
 - Use Jenkins Declarative Pipeline Syntax
-- Use agent label 'NodeJS_18'
+- Use agent { label '${agentLabel}' }
 - Include stages: checkout, build, test, deploy (if provided)
 `;
 

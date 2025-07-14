@@ -1,8 +1,7 @@
 
 pipeline {
-    agent {
-        label 'NodeJS_18'
-    }
+     agent { label 'any' }
+     
     stages {
         stage('Checkout') {
             steps {
